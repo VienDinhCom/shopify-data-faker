@@ -26,10 +26,37 @@ async function getAllProducts() {
 
     products = products.concat(page.products);
     hasNextPage = page.hasNextPage;
-    cursor = products[products.length - 1].cursor;
+
+    if (products[products.length - 1]) {
+      cursor = products[products.length - 1].cursor;
+    }
   }
 
   return products.map(({ id }) => ({
     id,
   }));
 }
+
+async function deleteAllProducts() {
+  const products = await getAllProducts();
+
+  const chunks = _.chunk(products, 50);
+
+  for (const chunk of chunks) {
+    await shopify.resolved(() => {
+      return chunk.map(({ id }) => {
+        return shopify.mutation.productDelete({
+          input: {
+            id,
+          },
+        }).deletedProductId;
+      });
+    });
+  }
+
+  console.log('Deleted all products');
+}
+
+(async () => {
+  await deleteAllProducts();
+})();
