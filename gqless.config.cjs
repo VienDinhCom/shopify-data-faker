@@ -12,7 +12,7 @@ const config = {
       'X-Shopify-Access-Token': envKit.get('SHOPIFY_ACCESS_TOKEN'),
     },
   },
-  destination: './src/shopify/index.ts',
+  destination: './app/shopify/index.ts',
   subscriptions: false,
   javascriptOutput: false,
 };
