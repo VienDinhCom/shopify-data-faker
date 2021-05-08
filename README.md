@@ -1,0 +1,6 @@
+- Products
+- Collections
+- Pages
+- Customers
+- Orders
+- Navitation

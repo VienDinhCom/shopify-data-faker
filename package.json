@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "env-kit": "^1.0.0",
+    "faker": "^5.5.3",
     "gqless": "^2.0.13",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@gqless/cli": "^2.0.15",
+    "@types/faker": "^5.5.4",
     "@types/lodash": "^4.14.168",
     "@types/node": "^15.0.2",
     "graphql-zeus": "^3.0.7",

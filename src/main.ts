@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import * as faker from 'faker';
 import { shopify } from './shopify';
 
 async function getAllProducts() {
@@ -58,5 +59,16 @@ async function deleteAllProducts() {
 }
 
 (async () => {
-  await deleteAllProducts();
+  // await deleteAllProducts();
+
+  const id = await shopify.resolved(() => {
+    return shopify.mutation.productCreate({
+      input: {
+        title: faker.commerce.productName(),
+        published: true,
+      },
+    }).product.id;
+  });
+
+  console.log(id);
 })();
