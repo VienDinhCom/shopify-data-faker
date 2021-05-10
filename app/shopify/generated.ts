@@ -14,10 +14,7 @@ export type Scalars = {
   Float: number;
   /** Amazon Web Services ARN. */
   ARN: any;
-  /**
-   * An [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) encoded UTC date string. Example value: `"2019-07-16"`.
-   *
-   */
+  /** An [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) encoded UTC date string. Example value: `"2019-07-16"`. */
   Date: any;
   /** An ISO-8601 encoded UTC date time string. Example value: `"2019-07-03T20:47:55Z"`. */
   DateTime: any;
@@ -35,7 +32,6 @@ export type Scalars = {
    * * `u`
    *
    * Example value: `"Your current domain is <strong>johns-apparel.myshopify.com</strong>."`
-   *
    */
   FormattedString: any;
   /** A string containing HTML code. Example value: `"<p>Grey cotton knit sweater.</p>"`. */
@@ -48,31 +44,30 @@ export type Scalars = {
    * Represents a unique identifier in the Storefront API. A `StorefrontID` value can be used wherever an ID is expected in the Storefront API.
    *
    * Example value: `"Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzEwMDc5Nzg1MTAw"`.
-   *
    */
   StorefrontID: any;
   /**
    * An RFC 3986 and RFC 3987 compliant URI string.
    *
    * Example value: `"https://johns-apparel.myshopify.com"`.
-   *
    */
   URL: any;
   /**
    * An unsigned 64-bit integer. Represents whole numeric values between 0 and 2^64 - 1 encoded as a string of base-10 digits.
    *
    * Example value: `"50"`.
-   *
    */
   UnsignedInt64: any;
   /**
    * Time between UTC time and a location's observed time, in the format `"+HH:MM"` or `"-HH:MM"`.
    *
    * Example value: `"-07:00"`.
-   *
    */
   UtcOffset: any;
 };
+
+
+
 
 
 
@@ -5678,10 +5673,10 @@ export enum DiscountErrorCode {
   TooManyArguments = 'TOO_MANY_ARGUMENTS',
   /** Missing a required argument. */
   MissingArgument = 'MISSING_ARGUMENT',
-  /** Exceeded maximum allowed value. */
-  ExceededMax = 'EXCEEDED_MAX',
   /** Value is outside allowed range. */
   ValueOutsideRange = 'VALUE_OUTSIDE_RANGE',
+  /** Exceeded maximum allowed value. */
+  ExceededMax = 'EXCEEDED_MAX',
   /** Cannot have both minimum subtotal and quantity present. */
   MinimumSubtotalAndQuantityRangeBothPresent = 'MINIMUM_SUBTOTAL_AND_QUANTITY_RANGE_BOTH_PRESENT',
   /** Active period overlaps with other automatic discounts. At any given time, only one automatic discount can be active. */
@@ -22581,7 +22576,7 @@ export type GetProductsQuery = (
       { __typename?: 'ProductEdge' }
       & { node: (
         { __typename?: 'Product' }
-        & Pick<Product, 'title' | 'handle'>
+        & Pick<Product, 'title' | 'handle' | 'description'>
       ) }
     )> }
   ) }
@@ -22595,6 +22590,7 @@ export const GetProductsDocument = gql`
       node {
         title
         handle
+        description
       }
     }
   }
