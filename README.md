@@ -1,5 +1,5 @@
-- Products
-- Collections
+- Products: Done
+- Collections: Done
 - Pages
 - Customers
 - Orders
