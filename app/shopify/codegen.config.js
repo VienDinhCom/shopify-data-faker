@@ -6,7 +6,7 @@ const accessToken = envKit.get('SHOPIFY_ACCESS_TOKEN');
 module.exports = {
   overwrite: true,
   generates: {
-    'app/shopify/graphql.ts': {
+    'app/shopify/generated.ts': {
       schema: [
         {
           [endpoint]: {

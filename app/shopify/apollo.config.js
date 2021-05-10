@@ -12,7 +12,7 @@ module.exports = {
         'X-Shopify-Access-Token': accessToken,
       },
     },
-    excludes: ['graphql.ts'],
+    excludes: ['generated.ts'],
     includes: ['graphql/**/*.gql'],
   },
 };

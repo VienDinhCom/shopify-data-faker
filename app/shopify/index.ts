@@ -1,7 +1,7 @@
 import envKit from 'env-kit';
 import { GraphQLClient } from 'graphql-request';
 
-import { getSdk } from './graphql';
+import { getSdk } from './generated';
 
 const endpoint = envKit.get('SHOPIFY_GRAPHQL_ENDPOINT') as string;
 const accessToken = envKit.get('SHOPIFY_ACCESS_TOKEN') as string;
