@@ -102,48 +102,41 @@ import { shopify, CollectionRuleColumn, CollectionRuleRelation } from './shopify
       keyword: 'wooden',
     },
     {
-      title: 'Cans',
-      keyword: 'can',
-    },
-    {
       title: 'Jumpers',
       keyword: 'jumper',
     },
   ];
 
   async function create(input: Input) {
-    const id = await shopify.resolved(() => {
-      const { collection } = shopify.mutation.collectionCreate({
-        input: {
-          title: input.title,
-          handle: input.keyword,
-          descriptionHtml: faker.lorem.paragraph(),
-          ruleSet: {
-            appliedDisjunctively: true,
-            rules: [
-              {
-                column: CollectionRuleColumn.TITLE,
-                condition: input.keyword,
-                relation: CollectionRuleRelation.CONTAINS,
-              },
-            ],
-          },
+    const {
+      collectionCreate: { collection },
+    } = await shopify.createCollection({
+      input: {
+        title: input.title,
+        handle: input.keyword,
+        descriptionHtml: faker.lorem.paragraph(),
+        ruleSet: {
+          appliedDisjunctively: true,
+          rules: [
+            {
+              column: CollectionRuleColumn.Title,
+              condition: input.keyword,
+              relation: CollectionRuleRelation.Contains,
+            },
+          ],
         },
-      });
-
-      return collection.id;
+      },
     });
 
-    return id;
+    return collection;
   }
 
   const chunks = _.chunk(inputs, 5);
 
   for (const chunk of chunks) {
-    const requests = chunk.map((input) => create(input));
+    const collectionRequests = chunk.map((input) => create(input));
+    const collections = await Promise.all(collectionRequests);
 
-    const results = await Promise.all(requests);
-
-    console.log(results);
+    console.log(collections);
   }
 })();
