@@ -22581,23 +22581,6 @@ export type CreateCollectionMutation = (
   )> }
 );
 
-export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetProductsQuery = (
-  { __typename?: 'QueryRoot' }
-  & { products: (
-    { __typename?: 'ProductConnection' }
-    & { edges: Array<(
-      { __typename?: 'ProductEdge' }
-      & { node: (
-        { __typename?: 'Product' }
-        & Pick<Product, 'title' | 'handle'>
-      ) }
-    )> }
-  ) }
-);
-
 
 export const CreateCollectionDocument = gql`
     mutation createCollection($input: CollectionInput!) {
@@ -22605,18 +22588,6 @@ export const CreateCollectionDocument = gql`
     collection {
       id
       title
-    }
-  }
-}
-    `;
-export const GetProductsDocument = gql`
-    query getProducts {
-  products(first: 250) {
-    edges {
-      node {
-        title
-        handle
-      }
     }
   }
 }
@@ -22631,9 +22602,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     createCollection(variables: CreateCollectionMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateCollectionMutation> {
       return withWrapper(() => client.request<CreateCollectionMutation>(CreateCollectionDocument, variables, requestHeaders));
-    },
-    getProducts(variables?: GetProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetProductsQuery> {
-      return withWrapper(() => client.request<GetProductsQuery>(GetProductsDocument, variables, requestHeaders));
     }
   };
 }
