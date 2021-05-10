@@ -22570,10 +22570,10 @@ export type DeliveryProfileUpdatePayload = {
   userErrors: Array<UserError>;
 };
 
-export type ProductsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProductsQuery = (
+export type GetProductsQuery = (
   { __typename?: 'QueryRoot' }
   & { products: (
     { __typename?: 'ProductConnection' }
@@ -22581,19 +22581,20 @@ export type ProductsQuery = (
       { __typename?: 'ProductEdge' }
       & { node: (
         { __typename?: 'Product' }
-        & Pick<Product, 'title'>
+        & Pick<Product, 'title' | 'handle'>
       ) }
     )> }
   ) }
 );
 
 
-export const ProductsDocument = gql`
-    query products {
-  products(first: 10) {
+export const GetProductsDocument = gql`
+    query getProducts {
+  products(first: 250) {
     edges {
       node {
         title
+        handle
       }
     }
   }
@@ -22607,8 +22608,8 @@ const defaultWrapper: SdkFunctionWrapper = sdkFunction => sdkFunction();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    products(variables?: ProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProductsQuery> {
-      return withWrapper(() => client.request<ProductsQuery>(ProductsDocument, variables, requestHeaders));
+    getProducts(variables?: GetProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetProductsQuery> {
+      return withWrapper(() => client.request<GetProductsQuery>(GetProductsDocument, variables, requestHeaders));
     }
   };
 }

@@ -1,7 +1,7 @@
 import { shopify } from './shopify';
 
 (async () => {
-  const { products } = await shopify.products();
+  const { products } = await shopify.getProducts();
 
-  console.log(products);
+  console.log(products.edges);
 })();

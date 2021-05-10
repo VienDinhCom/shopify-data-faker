@@ -1,8 +1,9 @@
-query products {
-  products(first: 10) {
+query getProducts {
+  products(first: 250) {
     edges {
       node {
         title
+        handle
       }
     }
   }
