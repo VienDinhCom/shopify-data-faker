@@ -102,10 +102,6 @@ import { shopify, CollectionRuleColumn, CollectionRuleRelation } from './shopify
       keyword: 'wooden',
     },
     {
-      title: 'Cans',
-      keyword: 'can',
-    },
-    {
       title: 'Jumpers',
       keyword: 'jumper',
     },
