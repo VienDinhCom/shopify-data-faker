@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node",
-    "codegen": "graphql-codegen -c app/shopify/codegen.config.js",
-    "download-schema": "apollo client:download-schema -c app/shopify/apollo.config.js app/shopify/schema.gql"
+    "codegen": "graphql-codegen -c app/shopify-graphql/codegen.config.js",
+    "download-schema": "apollo client:download-schema -c app/shopify-graphql/apollo.config.js app/shopify-graphql/schema.gql"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "env-kit": "^1.0.0",
     "faker": "^5.5.3",
     "graphql": "^15.5.0",
