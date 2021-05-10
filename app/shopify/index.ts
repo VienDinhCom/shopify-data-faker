@@ -13,3 +13,5 @@ const client = new GraphQLClient(endpoint, {
 });
 
 export const shopify = getSdk(client);
+
+export * from './generated';

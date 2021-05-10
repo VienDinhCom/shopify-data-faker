@@ -5673,10 +5673,10 @@ export enum DiscountErrorCode {
   TooManyArguments = 'TOO_MANY_ARGUMENTS',
   /** Missing a required argument. */
   MissingArgument = 'MISSING_ARGUMENT',
-  /** Value is outside allowed range. */
-  ValueOutsideRange = 'VALUE_OUTSIDE_RANGE',
   /** Exceeded maximum allowed value. */
   ExceededMax = 'EXCEEDED_MAX',
+  /** Value is outside allowed range. */
+  ValueOutsideRange = 'VALUE_OUTSIDE_RANGE',
   /** Cannot have both minimum subtotal and quantity present. */
   MinimumSubtotalAndQuantityRangeBothPresent = 'MINIMUM_SUBTOTAL_AND_QUANTITY_RANGE_BOTH_PRESENT',
   /** Active period overlaps with other automatic discounts. At any given time, only one automatic discount can be active. */
@@ -22565,6 +22565,22 @@ export type DeliveryProfileUpdatePayload = {
   userErrors: Array<UserError>;
 };
 
+export type CreateCollectionMutationVariables = Exact<{
+  input: CollectionInput;
+}>;
+
+
+export type CreateCollectionMutation = (
+  { __typename?: 'Mutation' }
+  & { collectionCreate?: Maybe<(
+    { __typename?: 'CollectionCreatePayload' }
+    & { collection?: Maybe<(
+      { __typename?: 'Collection' }
+      & Pick<Collection, 'id' | 'title'>
+    )> }
+  )> }
+);
+
 export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -22576,13 +22592,23 @@ export type GetProductsQuery = (
       { __typename?: 'ProductEdge' }
       & { node: (
         { __typename?: 'Product' }
-        & Pick<Product, 'title' | 'handle' | 'description'>
+        & Pick<Product, 'title' | 'handle'>
       ) }
     )> }
   ) }
 );
 
 
+export const CreateCollectionDocument = gql`
+    mutation createCollection($input: CollectionInput!) {
+  collectionCreate(input: $input) {
+    collection {
+      id
+      title
+    }
+  }
+}
+    `;
 export const GetProductsDocument = gql`
     query getProducts {
   products(first: 250) {
@@ -22590,7 +22616,6 @@ export const GetProductsDocument = gql`
       node {
         title
         handle
-        description
       }
     }
   }
@@ -22604,6 +22629,9 @@ const defaultWrapper: SdkFunctionWrapper = sdkFunction => sdkFunction();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    createCollection(variables: CreateCollectionMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateCollectionMutation> {
+      return withWrapper(() => client.request<CreateCollectionMutation>(CreateCollectionDocument, variables, requestHeaders));
+    },
     getProducts(variables?: GetProductsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetProductsQuery> {
       return withWrapper(() => client.request<GetProductsQuery>(GetProductsDocument, variables, requestHeaders));
     }
