@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node",
-    "schema": "apollo client:download-schema -c app/shopify/apollo.config.js app/shopify/schema.graphql",
     "codegen": "graphql-codegen -c app/shopify/codegen.config.js"
   },
   "dependencies": {
