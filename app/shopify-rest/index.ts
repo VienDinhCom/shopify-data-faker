@@ -10,3 +10,25 @@ export const shopify = axios.create({
     'X-Shopify-Access-Token': accessToken,
   },
 });
+
+export interface Blog {
+  id?: number;
+  handle?: string;
+  title: string;
+}
+
+export interface Article {
+  id?: number;
+  handle?: string;
+  title: string;
+  body_html: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+export interface Data {
+  blogs: Blog[];
+  article: Article;
+}

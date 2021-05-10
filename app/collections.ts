@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as faker from 'faker';
-import { shopify, CollectionRuleColumn, CollectionRuleRelation } from './shopify';
+import { shopify, CollectionRuleColumn, CollectionRuleRelation } from './shopify-graphql';
 
 (async () => {
   interface Input {
