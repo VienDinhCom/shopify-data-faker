@@ -108,9 +108,7 @@ import { shopify, CollectionRuleColumn, CollectionRuleRelation } from './shopify
   ];
 
   async function create(input: Input) {
-    const {
-      collectionCreate: { collection },
-    } = await shopify.createCollection({
+    const { collectionCreate } = await shopify.createCollection({
       input: {
         title: input.title,
         handle: input.keyword,
@@ -128,7 +126,7 @@ import { shopify, CollectionRuleColumn, CollectionRuleRelation } from './shopify
       },
     });
 
-    return collection;
+    return collectionCreate?.collection?.id;
   }
 
   const chunks = _.chunk(inputs, 5);
