@@ -33,7 +33,15 @@ export interface Article {
   };
 }
 
+export interface Page {
+  id?: number;
+  handle?: string;
+  title: string;
+  body_html: string;
+}
+
 export interface Data {
   blogs: Blog[];
   article: Article;
+  page: Page;
 }
