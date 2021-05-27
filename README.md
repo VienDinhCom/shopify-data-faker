@@ -4,7 +4,7 @@ A Shopify development tool for generating dummy store data.
 
 ## Products
 
-To import products, please go to the **Products** page, click on the **Import** button, and select the **product.csv** file.
+To import products, please go to the **Products** page, click on the **Import** button, and select the **app/product.csv** file.
 
 ## Collections
 
