@@ -22,7 +22,11 @@ async function createArticle(title: string) {
 }
 
 (async () => {
-  await createArticle('About');
+  const about = await createArticle('About');
+  console.log(about);
+
   await sleep(3000);
-  await createArticle('Contact');
+
+  const contact = await createArticle('Contact');
+  console.log(contact);
 })();

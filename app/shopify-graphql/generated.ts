@@ -1602,13 +1602,13 @@ export type Collection = HasMetafields & Node & Publishable & HasPublishedTransl
   image?: Maybe<Image>;
   /** The ID of the corresponding resource in the REST Admin API. */
   legacyResourceId: Scalars['UnsignedInt64'];
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
   /** The products that are included in the collection. */
   products: ProductConnection;
@@ -3223,9 +3223,9 @@ export type Customer = Node & CommentEventSubject & HasMetafields & LegacyIntero
    * If the customer does not accept email marketing, then this property will be null.
    */
   marketingOptInLevel?: Maybe<CustomerMarketingOptInLevel>;
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
   /** A unique identifier for the customer that's used with Multipass login. */
   multipassIdentifier?: Maybe<Scalars['String']>;
@@ -3239,9 +3239,9 @@ export type Customer = Node & CommentEventSubject & HasMetafields & LegacyIntero
   paymentMethods: CustomerPaymentMethodConnection;
   /** The customer's phone number. */
   phone?: Maybe<Scalars['String']>;
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
   /** Possible subscriber states of a customer defined by their subscription contracts. */
   productSubscriberStatus: CustomerProductSubscriberStatus;
@@ -5673,10 +5673,10 @@ export enum DiscountErrorCode {
   TooManyArguments = 'TOO_MANY_ARGUMENTS',
   /** Missing a required argument. */
   MissingArgument = 'MISSING_ARGUMENT',
-  /** Exceeded maximum allowed value. */
-  ExceededMax = 'EXCEEDED_MAX',
   /** Value is outside allowed range. */
   ValueOutsideRange = 'VALUE_OUTSIDE_RANGE',
+  /** Exceeded maximum allowed value. */
+  ExceededMax = 'EXCEEDED_MAX',
   /** Cannot have both minimum subtotal and quantity present. */
   MinimumSubtotalAndQuantityRangeBothPresent = 'MINIMUM_SUBTOTAL_AND_QUANTITY_RANGE_BOTH_PRESENT',
   /** Active period overlaps with other automatic discounts. At any given time, only one automatic discount can be active. */
@@ -6106,9 +6106,9 @@ export type DraftOrder = Node & HasMetafields & CommentEventSubject & LegacyInte
   lineItems: DraftOrderLineItemConnection;
   /** List of localization extensions for the resource. */
   localizationExtensions: LocalizationExtensionConnection;
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
   /** Unique identifier for the draft order, which is unique within the store. For example, _#D1223_. */
   name: Scalars['String'];
@@ -6116,9 +6116,9 @@ export type DraftOrder = Node & HasMetafields & CommentEventSubject & LegacyInte
   note2?: Maybe<Scalars['String']>;
   /** Order that was created from this draft order. */
   order?: Maybe<Order>;
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
   /**
    * Whether or not the Draft Order is ready and can be completed. Draft Orders
@@ -7946,13 +7946,13 @@ export type HasLocalizationExtensionsForDraftOrdersLocalizationExtensionsArgs = 
 
 /** Represents information about the metafields associated to the specified resource. */
 export type HasMetafields = {
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
 };
 
@@ -8013,9 +8013,9 @@ export type Image = HasMetafields & {
   height?: Maybe<Scalars['Int']>;
   /** A unique identifier for the image. */
   id?: Maybe<Scalars['ID']>;
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
   /**
    * The location of the original image as a URL.
@@ -8023,9 +8023,9 @@ export type Image = HasMetafields & {
    * If there are any existing transformations in the original source URL, they will remain and not be stripped.
    */
   originalSrc: Scalars['URL'];
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
   /**
    * The location of the image as a URL.
@@ -12340,9 +12340,9 @@ export type Order = Node & CommentEventSubject & HasMetafields & LegacyInteroper
   merchantEditable: Scalars['Boolean'];
   /** A list of reasons of why the order cannot be edited. */
   merchantEditableErrors: Array<Scalars['String']>;
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
   /**
    * Unique identifier for the order that appears on the order.
@@ -12382,9 +12382,9 @@ export type Order = Node & CommentEventSubject & HasMetafields & LegacyInteroper
   physicalLocation?: Maybe<Location>;
   /** The payment currency of the customer for this order. */
   presentmentCurrencyCode: CurrencyCode;
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
   /**
    * Date and time when the order was processed.
@@ -14777,9 +14777,9 @@ export type Product = Node & Navigable & HasMetafields & HasPublishedTranslation
   media: MediaConnection;
   /** Total count of media belonging to a product. */
   mediaCount: Scalars['Int'];
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
   /** The online store preview URL. */
   onlineStorePreviewUrl?: Maybe<Scalars['URL']>;
@@ -14797,9 +14797,9 @@ export type Product = Node & Navigable & HasMetafields & HasPublishedTranslation
   priceRange: ProductPriceRange;
   /** The price range of the product with prices formatted as decimals. */
   priceRangeV2: ProductPriceRangeV2;
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
   /**
    * A list of the channels where the product is published.
@@ -15647,9 +15647,9 @@ export type ProductVariant = Node & HasMetafields & HasPublishedTranslations & N
   legacyResourceId: Scalars['UnsignedInt64'];
   /** The media associated with the product variant. */
   media: MediaConnection;
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
   /** The order of the product variant in the list of product variants. The first position in the list is 1. */
   position: Scalars['Int'];
@@ -15657,9 +15657,9 @@ export type ProductVariant = Node & HasMetafields & HasPublishedTranslations & N
   presentmentPrices: ProductVariantPricePairConnection;
   /** The price of the product variant in the default shop currency. */
   price: Scalars['Money'];
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
   /** The product that this variant belongs to. */
   product: Product;
@@ -17795,7 +17795,7 @@ export type SavedSearchConnection = {
 
 /** Specifies the fields required to create a saved search. */
 export type SavedSearchCreateInput = {
-  /** The type of resouce this saved search is searching in. */
+  /** The type of resource this saved search is searching in. */
   resourceType: SearchResultType;
   /** A descriptive name of the saved search. */
   name: Scalars['String'];
@@ -19038,9 +19038,9 @@ export type Shop = Node & HasPublishedTranslations & HasMetafields & {
    * @deprecated Use `QueryRoot.marketingEvents` instead.
    */
   marketingEvents: MarketingEventConnection;
-  /** The metafield associated with the resource. */
+  /** Returns a metafield by namespace and key that belongs to the resource. */
   metafield?: Maybe<Metafield>;
-  /** A paginated list of metafields associated with the resource. */
+  /** List of metafields that belong to the resource. */
   metafields: MetafieldConnection;
   /** The shop's .myshopify.com domain name. */
   myshopifyDomain: Scalars['String'];
@@ -19085,9 +19085,9 @@ export type Shop = Node & HasPublishedTranslations & HasMetafields & {
   priceRules: PriceRuleConnection;
   /** The shop's primary domain name. */
   primaryDomain: Domain;
-  /** Returns a private metafield found by namespace and key. */
+  /** Returns a private metafield by namespace and key that belongs to the resource. */
   privateMetafield?: Maybe<PrivateMetafield>;
-  /** List of private metafields. */
+  /** List of private metafields that belong to the resource. */
   privateMetafields: PrivateMetafieldConnection;
   /**
    * Return a product by its handle.

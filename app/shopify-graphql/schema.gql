@@ -2056,18 +2056,18 @@ type Collection implements HasMetafields & Node & Publishable & HasPublishedTran
   """The ID of the corresponding resource in the REST Admin API."""
   legacyResourceId: UnsignedInt64!
 
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -2086,7 +2086,9 @@ type Collection implements HasMetafields & Node & Publishable & HasPublishedTran
     reverse: Boolean = false
   ): MetafieldConnection!
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -2095,7 +2097,7 @@ type Collection implements HasMetafields & Node & Publishable & HasPublishedTran
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String
@@ -4355,18 +4357,18 @@ type Customer implements Node & CommentEventSubject & HasMetafields & LegacyInte
   """
   marketingOptInLevel: CustomerMarketingOptInLevel
 
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -4476,7 +4478,9 @@ type Customer implements Node & CommentEventSubject & HasMetafields & LegacyInte
   """The customer's phone number."""
   phone: String
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -4485,7 +4489,7 @@ type Customer implements Node & CommentEventSubject & HasMetafields & LegacyInte
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String
@@ -7669,11 +7673,11 @@ enum DiscountErrorCode {
   """Missing a required argument."""
   MISSING_ARGUMENT
 
-  """Exceeded maximum allowed value."""
-  EXCEEDED_MAX
-
   """Value is outside allowed range."""
   VALUE_OUTSIDE_RANGE
+
+  """Exceeded maximum allowed value."""
+  EXCEEDED_MAX
 
   """Cannot have both minimum subtotal and quantity present."""
   MINIMUM_SUBTOTAL_AND_QUANTITY_RANGE_BOTH_PRESENT
@@ -8289,18 +8293,18 @@ type DraftOrder implements Node & HasMetafields & CommentEventSubject & LegacyIn
     reverse: Boolean = false
   ): LocalizationExtensionConnection!
 
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -8330,7 +8334,9 @@ type DraftOrder implements Node & HasMetafields & CommentEventSubject & LegacyIn
   """Order that was created from this draft order."""
   order: Order
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -8339,7 +8345,7 @@ type DraftOrder implements Node & HasMetafields & CommentEventSubject & LegacyIn
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String
@@ -10618,18 +10624,18 @@ interface HasLocalizationExtensionsForDraftOrders {
 Represents information about the metafields associated to the specified resource.
 """
 interface HasMetafields {
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -10648,7 +10654,9 @@ interface HasMetafields {
     reverse: Boolean = false
   ): MetafieldConnection!
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -10657,7 +10665,7 @@ interface HasMetafields {
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String
@@ -10701,18 +10709,18 @@ type Image implements HasMetafields {
   """A unique identifier for the image."""
   id: ID
 
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -10738,7 +10746,9 @@ type Image implements HasMetafields {
   """
   originalSrc: URL!
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -10747,7 +10757,7 @@ type Image implements HasMetafields {
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String
@@ -15889,18 +15899,18 @@ type Order implements Node & CommentEventSubject & HasMetafields & LegacyInterop
   """A list of reasons of why the order cannot be edited."""
   merchantEditableErrors: [String!]!
 
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -15993,7 +16003,9 @@ type Order implements Node & CommentEventSubject & HasMetafields & LegacyInterop
   """The payment currency of the customer for this order."""
   presentmentCurrencyCode: CurrencyCode!
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -16002,7 +16014,7 @@ type Order implements Node & CommentEventSubject & HasMetafields & LegacyInterop
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String
@@ -19036,18 +19048,18 @@ type Product implements Node & Navigable & HasMetafields & HasPublishedTranslati
   """Total count of media belonging to a product."""
   mediaCount: Int!
 
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -19089,7 +19101,9 @@ type Product implements Node & Navigable & HasMetafields & HasPublishedTranslati
   """The price range of the product with prices formatted as decimals."""
   priceRangeV2: ProductPriceRangeV2!
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -19098,7 +19112,7 @@ type Product implements Node & Navigable & HasMetafields & HasPublishedTranslati
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String
@@ -20106,18 +20120,18 @@ type ProductVariant implements Node & HasMetafields & HasPublishedTranslations &
     reverse: Boolean = false
   ): MediaConnection!
 
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -20167,7 +20181,9 @@ type ProductVariant implements Node & HasMetafields & HasPublishedTranslations &
   """The price of the product variant in the default shop currency."""
   price: Money!
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -20176,7 +20192,7 @@ type ProductVariant implements Node & HasMetafields & HasPublishedTranslations &
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String
@@ -23094,7 +23110,7 @@ type SavedSearchConnection {
 
 """Specifies the fields required to create a saved search."""
 input SavedSearchCreateInput {
-  """The type of resouce this saved search is searching in."""
+  """The type of resource this saved search is searching in."""
   resourceType: SearchResultType!
 
   """A descriptive name of the saved search."""
@@ -24946,18 +24962,18 @@ type Shop implements Node & HasPublishedTranslations & HasMetafields {
     query: String
   ): MarketingEventConnection! @deprecated(reason: "Use `QueryRoot.marketingEvents` instead.")
 
-  """The metafield associated with the resource."""
+  """Returns a metafield by namespace and key that belongs to the resource."""
   metafield(
-    """Container for a set of metafields (maximum of 20 characters)."""
+    """The namespace for the metafield."""
     namespace: String!
 
-    """Identifier for the metafield (maximum of 30 characters)."""
+    """The key for the metafield."""
     key: String!
   ): Metafield
 
-  """A paginated list of metafields associated with the resource."""
+  """List of metafields that belong to the resource."""
   metafields(
-    """Finds all metafields with a specific namespace under the resource."""
+    """The metafield namespace to filter by."""
     namespace: String
 
     """Returns up to the first `n` elements from the list."""
@@ -25146,7 +25162,9 @@ type Shop implements Node & HasPublishedTranslations & HasMetafields {
   """The shop's primary domain name."""
   primaryDomain: Domain!
 
-  """Returns a private metafield found by namespace and key."""
+  """
+  Returns a private metafield by namespace and key that belongs to the resource.
+  """
   privateMetafield(
     """The namespace for the private metafield."""
     namespace: String!
@@ -25155,7 +25173,7 @@ type Shop implements Node & HasPublishedTranslations & HasMetafields {
     key: String!
   ): PrivateMetafield
 
-  """List of private metafields."""
+  """List of private metafields that belong to the resource."""
   privateMetafields(
     """Filter the private metafields by namespace."""
     namespace: String

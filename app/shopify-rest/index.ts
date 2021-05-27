@@ -2,7 +2,7 @@ import axios from 'axios';
 import envKit from 'env-kit';
 import axiosRetry from 'axios-retry';
 
-const endpoint = envKit.get('SHOPIFY_REST_ENDPOINT') as string;
+const endpoint = envKit.get('SHOPIFY_API_ENDPOINT') as string;
 const accessToken = envKit.get('SHOPIFY_ACCESS_TOKEN') as string;
 
 const shopify = axios.create({

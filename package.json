@@ -4,8 +4,11 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node",
-    "codegen": "graphql-codegen -c app/shopify-graphql/codegen.config.js",
-    "download-schema": "apollo client:download-schema -c app/shopify-graphql/apollo.config.js app/shopify-graphql/schema.gql"
+    "codegen": "npm run download-schema && graphql-codegen -c app/shopify-graphql/codegen.config.js",
+    "download-schema": "apollo client:download-schema -c app/shopify-graphql/apollo.config.js app/shopify-graphql/schema.gql",
+    "gen-pages": "ts-node app/pages.ts",
+    "gen-articles": "ts-node app/articles.ts",
+    "gen-collections": "ts-node app/collections.ts"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -24,6 +27,7 @@
     "@types/faker": "^5.5.4",
     "@types/lodash": "^4.14.168",
     "@types/node": "^15.0.2",
+    "apollo": "^2.33.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   }
